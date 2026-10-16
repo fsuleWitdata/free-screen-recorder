@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Grabador</title>
+<link rel="stylesheet" href="ui.css">
+<style>body{width:360px}details{margin:0 16px 12px}summary{cursor:pointer;color:var(--muted);font-weight:600;padding:4px 0}
+.mini{width:auto;padding:6px 12px;font-size:12px;display:inline-flex}code{display:block;background:var(--bg);padding:4px 6px;border-radius:6px;font-size:11px;word-break:break-all;margin:6px 0}</style></head><body>
+<div class="hdr"><span class="dot"></span><h1>Grabador de pantalla</h1></div>
+
+<div id="setup">
+  <div class="card">
+    <p class="lbl">Qué grabar</p>
+    <div class="seg" data-k="src"><button data-v="screen">Pantalla / ventana</button><button data-v="tab">Pestaña actual</button></div>
+    <p class="lbl" style="margin-top:12px">Resolución</p>
+    <div class="seg" data-k="res"><button data-v="720">720p</button><button data-v="1080">1080p</button><button data-v="2160">4K</button></div>
+    <p class="lbl" style="margin-top:12px">Formato</p>
+    <div class="seg" data-k="fmt"><button data-v="mp4">MP4</button><button data-v="webm">WebM</button></div>
+    <p class="lbl" style="margin-top:12px">Calidad</p>
+    <div class="seg" data-k="q"><button data-v="0.3">Baja</button><button data-v="0.6">Media</button><button data-v="1">Alta</button></div>
+  </div>
+  <div class="card">
+    <div class="row"><span>Cuenta regresiva (3-2-1)</span><label class="sw"><input type="checkbox" id="cd"><i></i></label></div>
+    <div class="row"><span>Barra flotante en la página</span><label class="sw"><input type="checkbox" id="bar"><i></i></label></div>
+    <div class="row"><span>Audio del sistema / pestaña</span><label class="sw"><input type="checkbox" id="sys"><i></i></label></div>
+    <div class="row"><span>Micrófono</span><label class="sw"><input type="checkbox" id="mic"><i></i></label></div>
+    <div id="micbox"><select id="micsel"></select><div class="meter"><div id="lvl"></div></div>
+      <button class="btn gray mini" id="allowmic" hidden style="margin-top:8px">Permitir micrófono</button></div>
+  </div>
+</div>
+
+<div class="main">
+  <div id="live" hidden>
+    <div class="timer"><span class="rec-dot"></span><span id="timer">00:00:00</span></div>
+    <div class="btns"><button class="btn gray" id="pause">Pausa</button><button class="btn" id="stop">Detener</button></div>
+  </div>
+  <button class="btn" id="start">● Iniciar grabación</button>
+
+  <div class="card" id="done" hidden style="margin:0">
+    <p class="lbl">Grabación lista</p>
+    <p class="lbl">Nombre</p>
+    <div style="display:flex;align-items:center;gap:6px"><input type="text" id="fname" maxlength="120" style="margin-top:0" placeholder="Nombre del video"><span id="fext" class="note" style="margin:0"></span></div>
+    <div class="note" id="finfo" style="margin:2px 0 10px"></div>
+    <p class="lbl">¿Dónde guardarla?</p>
+    <div class="row"><span>En esta computadora</span><label class="sw"><input type="checkbox" id="dLocal"><i></i></label></div>
+    <div class="row"><span>En Google Drive</span><label class="sw"><input type="checkbox" id="dDrive"><i></i></label></div>
+    <div class="row"><span>Liberar espacio temporal al terminar</span><label class="sw"><input type="checkbox" id="free"><i></i></label></div>
+    <div class="btns" style="margin-top:10px"><button class="btn blue" id="deliver">Guardar</button><button class="btn gray" id="discard" style="width:auto;padding:11px 14px">Descartar</button></div>
+    <div class="bar" id="bar" hidden><div id="barfill"></div></div>
+  </div>
+  <p class="note" id="msg"></p>
+</div>
+
+<details id="drv" style="margin-top:8px"><summary>Google Drive (configuración)</summary>
+  <p class="note">Cada persona usa su propio Client ID (gratis). Pasos en el README.</p>
+  <p class="note" style="margin-top:4px">URI de redirección a autorizar en Google Cloud:</p>
+  <code id="redir"></code><button class="btn gray mini" id="copy">Copiar</button>
+  <input type="text" id="cid" placeholder="Client ID: xxxx.apps.googleusercontent.com">
+  <div style="margin-top:8px"><button class="btn blue mini" id="test">Guardar y probar conexión</button></div>
+  <p class="note" id="drvmsg"></p>
+</details>
+<script type="module" src="popup.js"></script></body></html>

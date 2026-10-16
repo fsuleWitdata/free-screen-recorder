@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Free Screen Recorder",
+  "version": "4.0.1",
+  "description": "Grabador de pantalla/pestana local, sin limite de duracion ni nube.",
+  "action": {
+    "default_title": "Grabar pantalla",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "identity",
+    "offscreen",
+    "power",
+    "downloads",
+    "tabCapture",
+    "scripting",
+    "tabs",
+    "desktopCapture"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "<all_urls>"
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr0pRvK+BIQLF4pvyMyyjfzGcutiC16iMgsagaD7sYDPU557+wcwY9+ElUs1HmszbOZIsOVZjvWk10ABcYkJz3C3hHqooaWv8h2xuc0BewiXzpvHqXDameW1l/Kr85RuNMlHjO4PeeLLuotz7ReOaCyd4R9izpuQtDIOSimiXNDZbEdGC5SPnWv2AGWgFaocyX+3nemFXGU3vAUVMkRrRiHBaH2Tkv9qcnhxkjP4zcElRUp+ciZgZOaZk7tT/y49RPCc3kAWn6ZNU/R8AZMSPwT63rYjQFUqf1JSpuU2xPRVWZqB9LQ55anoaDrQXdYSXz+Ud/COmBgSJtcs7sTG4JwIDAQAB"
+}
